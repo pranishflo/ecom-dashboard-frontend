@@ -7,32 +7,39 @@ import {
     SettingsOutlined,
     ArrowDropDownOutline,
 } from"@mui/icons-material";
-import FlexBetween from "components/FlexBetween";
-import {useDispatch} from "react-redux";
-import {setMode} from "state";
+import FlexBetween from "../components/FlexBetween";
+import {useDispatch} from 'react-redux';
+import {setMode} from "../state";
 import profileImage from "../assets/profile.JPG";
-import {AppBar,useTheme,Toolbar ,IconButton,InputBase,eachIcon } from  '@mui/material';
+import {AppBar,useTheme,Toolbar ,IconButton,InputBase } from  '@mui/material';
 
 
 
 
 
 
-const Navbar = () => {
+const Navbar = ({
+  user,
+  isSidebarOpen,
+  setIsSidebarOpen
+  
+}) => {
+
     const dispatch =useDispatch();
     const theme= useTheme();
-  return( <AppBar 
+  return ( 
+  <AppBar 
   sx={{
     position:"static",
     background:"none",
-    boxShadow:"none",
+    boxShadow:"none"
   }}
   >
     <Toolbar sx={{justifyContent: "space-between"}}>
       {/*leftside*/}   
       <FlexBetween>
-        <IconButton onClick ={()=> console.log('open/close sidebar')}>
-            <MenuIcon/>
+      <IconButton onClick={() => setIsSidebarOpen(isSidebarOpen)}>
+               <MenuIcon/>
         </IconButton>
       <FlexBetween
       backgroundColor={theme.palette.background.alt}
@@ -59,6 +66,11 @@ const Navbar = () => {
           <IconButton>
             <SettingsOutlined sx={{ fontSize:"25px"}}/>
           </IconButton>
+
+          <FlexBetween>
+           
+          </FlexBetween>
+
       </FlexBetween>
     </Toolbar>
   </AppBar>
